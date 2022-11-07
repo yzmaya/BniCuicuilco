@@ -14,6 +14,7 @@ import {
   cerrarSesion2,
   getTasks,
   auth,
+  saveInvitado,
 
 } from "./firebase.js";
 
@@ -22,6 +23,10 @@ const taskForm = document.getElementById("task-form");
 const tasksContainer = document.getElementById("tasks-container");
 const botonCerrar = document.getElementById("cerrar");
 const botonCerrar2 = document.getElementById("cerrar2");
+
+const formCrearInvitado = document.getElementById("signup-formInvitados");
+
+const formRegistrarNetSus = document.getElementById("signup-formNetSus");
 
 let editStatus = false;
 let id = "";
@@ -210,6 +215,51 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 
   //lectura de codigos qr
 
+
+  formCrearInvitado.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const nombre = formCrearInvitado["name2"];
+    const correo = formCrearInvitado["email2"];
+    const telefono = formCrearInvitado["telefono2"];
+    const invitadopor = formCrearInvitado["invitadopor2"];
+    const networker = formCrearInvitado["netinv-select"];
+
+    const date2 = new Date();
+    var hora = date2.getHours();
+    var mins = date2.getMinutes();
+    var secs = date2.getSeconds();
+    var horaComp = hora + ":" + mins + ":" + secs
+
+
+    var content = hora + "_" + mins + "_" + secs + correo.value
+
+
+
+    try {
+      //  console.log(correo.value)
+      //console.log(contrasena.value)
+
+
+      //return nombre;
+      // await  crearCuentaInvitado(auth,correo.value,contrasena.value,nombre.value)
+      saveInvitado(fechaComp, horaComp, nombre.value, content, networker.value, correo.value, telefono.value, invitadopor.value);
+      alert("¡Registro exitoso!, Bienvenid@ " + nombre.value)
+      nombre.value = ''
+      correo.value = ''
+      telefono.value = ''
+      invitadopor.value = ''
+      networker.value = ''
+      //  window.location.href = 'home.html';
+
+    } catch (error) {
+      console.log(error);
+    }
+    //  window.location.href = 'home.html';
+  });
+
+
+  //funcionalidad de escaner
+
   let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
   scanner.addListener('scan', function (content) {
 
@@ -222,12 +272,14 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 
 
 
+
     async function f() {
 
+      const networker = formRegistrarNetSus["netinv-select2"];
 
       const docu2 = await getTaskingName(content);
       const username = docu2.data().name;
-      saveDate(fechaComp, horaComp, username, content);
+      saveDate(fechaComp, horaComp, username, content, networker.value);
       // console.log(username)
       // return task2
       alert("¡Registro exitoso!, Bienvenid@ " + username)

@@ -68,7 +68,7 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<a href="#" class="icon solid fa-user-circle"><span>Usuario</span></a>
-			<a href="#work" class="icon solid fa-qrcode"><span>Acceso</span></a>
+			<a href="#work" class="icon solid fa-user-circle"><span>Invitados</span></a>
 			<a id="escaner" href="#escaner" class="icon solid fa-mobile-alt"><span>Escaner</span></a>
 			<!--	<a href="reporte2.html" class="icon solid fa-rss"><span>Networking</span></a> -->
 			<a id="cerrar" href="#contact" class="icon solid fa-power-off"><span>Cerrar Sesión</span></a>
@@ -95,27 +95,74 @@
 			<!-- Work -->
 			<article id="work" class="panel">
 				<header>
-					<h2>Acceso</h2>
+					<h2>Registro de Invitados</h2>
 				</header>
-				<div class="contenedor">
+				<form id="signup-formInvitados" method="post" action="">
+					<div>
+						<div class="row">
+							<div class="col-6 col-12-medium">
+								<input type="text" name="name" id="name2" placeholder="Nombre Completo" required="" />
+							</div>
+							<div class="col-6 col-12-medium">
+								<input type="email" name="email" id="email2" placeholder="Correo electrónico"
+									required="" />
+							</div>
+							<div class="col-12">
+								<input type="number" name="telefono" id="telefono2"
+									placeholder="Ingresa tu número celular" required="" />
+							</div>
+							<div class="col-12">
+								<input type="text" name="invitadopor" id="invitadopor2"
+									placeholder="Ingresa el nombre de quien te invitó a BNI Cuicuilco" required="" />
+							</div>
+							<div class="col-12">
+
+								<select name="netinv" id="netinv-select" required="">
+
+									<option value="Invitado">Invitado</option>
+									<option value="Observador">Observador</option>
+
+								</select>
+
+							</div>
+							<div class="col-12">
+								<input type="submit" value="Crear cuenta" />
+							</div>
+						</div>
+					</div>
+				</form>
+				<!--	<div class="contenedor">
 
 
 					<div id="contenedorQR" class="contenedorQR"></div>
 				</div>
-
+			-->
 			</article>
 
 
 			<article id="escaner" class="panel">
 				<header>
-					<h2>Escaner</h2>
+					<h2>Accede con tu acceso virtual</h2>
 				</header>
+				<form id="signup-formNetSus">
+					<div class="col-6 col-12-medium">
+						<select name="netinv" id="netinv-select2" required="">
 
-				<video id="preview"></video>
+							<option value="Networker">Networker</option>
+							<option value="Sustituto">Sustituto</option>
 
-			</article>
+						</select>
+				</form>
+		</div>
+		<video id="preview"></video>
 
-			<!-- Contact 
+		<br>
+		<a class="image fit">
+			<img src="imageshome/iniciarSesion.png">
+		</a>
+		</article>
+
+		<!-- Contact 
 							<article id="contact" class="panel">
 								<header>
 									<h2>Contact Me</h2>
@@ -143,16 +190,16 @@
 								</form>
 							</article>
 -->
-		</div>
+	</div>
 
-		<!-- Footer -->
-		<div id="footer">
-			<ul class="copyright">
-				<li>&copy; Revisapp 2022.</li>
-				<li>Éste Proyecto es patrocinado por: <a target="_blank" href="https://cyapp.io/">Web Apps &
-						Chatbots</a></li>
-			</ul>
-		</div>
+	<!-- Footer -->
+	<div id="footer">
+		<ul class="copyright">
+			<li>&copy; Revisapp 2022.</li>
+			<li>Éste Proyecto es patrocinado por: <a target="_blank" href="https://cyapp.io/">Web Apps &
+					Chatbots</a></li>
+		</ul>
+	</div>
 
 	</div>
 

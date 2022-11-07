@@ -73,7 +73,7 @@ import {
              
      <td>${task.hour}</td>
      <td>${task.nombre}</td>
-     
+     <td>${task.networker}</td>
     </tr>
        `;
         });

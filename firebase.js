@@ -226,10 +226,15 @@ console.log(usuarioRaiz)
 export const saveTask = (date, title, category, description, cantidad, uid) =>
   addDoc(collection(db, usuarioRaiz), { date, title, category, description, cantidad, uid });
 
+  export const saveDate = (date, hour, nombre, content, networker) =>
+  setDoc(doc(db, "users/" + content + "/acceso/" + date), { date, hour, nombre, content, networker });
 
-export const saveDate = (date, hour, nombre, content) =>
-  setDoc(doc(db, "users/" + content + "/acceso/" + date), { date, hour, nombre, content });
 
+export const saveInvitado = (date, hour, nombre, content, networker, correo, telefono, invitadopor) =>
+  setDoc(doc(db, "users/" + content + "/acceso/" + date), { date, hour, nombre, content, networker, correo, telefono, invitadopor });
+
+
+ 
 
 
 export const onGetTasks = (callback) =>

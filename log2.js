@@ -12,7 +12,7 @@ import {
   const formCrearCuenta = document.getElementById("signup-form2");
 
 
-
+ 
   
   // inicio de sesión
 
