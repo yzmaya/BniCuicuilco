@@ -84,8 +84,8 @@
 				<header>
 					<h1 id="nombre"></h1>
 					<p>Bienvenid@</p>
-				
-				<!--	<h4>Boleto participante: <span id="boleto" style="color: red;">A21</span></h4> -->
+
+					<!--	<h4>Boleto participante: <span id="boleto" style="color: red;">A21</span></h4> -->
 				</header>
 				<a href="#work" class="jumplink pic">
 					<span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
@@ -98,11 +98,14 @@
 				<header>
 					<h2>Acceso</h2>
 				</header>
-				<div class="contenedor">
+				<div class="contenedor" id="ID_DIV" style="text-align: center;">
+					<h4><span id="nombre2"></span> bienvenido a <span style="color: #cf2030;">BNI Cuicuilco</span></h4>
 
 
 					<div id="contenedorQR" class="contenedorQR"></div>
 				</div>
+				<br>
+				<a onclick="javascript:window.imprimirDIV('ID_DIV');" ><button>Descargar</button></a>
 
 			</article>
 
@@ -150,7 +153,8 @@
 		<div id="footer">
 			<ul class="copyright">
 				<li>&copy; Xamapp 2022.</li>
-				<li>Éste Proyecto es patrocinado por: <a target="_blank" href="https://cyapp.io/">Web Apps & Chatbots</a></li>
+				<li>Éste Proyecto es patrocinado por: <a target="_blank" href="https://cyapp.io/">Web Apps &
+						Chatbots</a></li>
 			</ul>
 		</div>
 
@@ -159,8 +163,16 @@
 	<!-- Scripts -->
 	<script type="module" src="./index.js" type="module"></script>
 	<script type="text/javascript">
-
+		 function imprimirDIV(contenido) {
+        var ficha = document.getElementById(contenido);
+        var ventanaImpresion = window.open(' ', 'popUp');
+        ventanaImpresion.document.write(ficha.innerHTML);
+        ventanaImpresion.document.close();
+        ventanaImpresion.print();
+        ventanaImpresion.close();
+    }
 	</script>
+	<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 	<script src="assetshome/js/jquery.min.js"></script>
 	<script src="assetshome/js/browser.min.js"></script>
 	<script src="assetshome/js/breakpoints.min.js"></script>

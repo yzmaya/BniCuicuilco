@@ -78,6 +78,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 
 
   document.getElementById('nombre').innerHTML = task;
+  document.getElementById('nombre2').innerHTML = task;
 
  // document.getElementById('boleto').innerHTML = outputString1;
 
