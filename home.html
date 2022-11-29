@@ -98,14 +98,14 @@
 				<header>
 					<h2>Acceso</h2>
 				</header>
-				<div class="contenedor" id="ID_DIV" style="text-align: center;">
+				<div class="contenedor" id="imagen" style="text-align: center;">
 					<h4><span id="nombre2"></span> bienvenido a <span style="color: #cf2030;">BNI Cuicuilco</span></h4>
 
 
 					<div id="contenedorQR" class="contenedorQR"></div>
 				</div>
 				<br>
-				<a onclick="javascript:window.imprimirDIV('ID_DIV');" ><button>Descargar</button></a>
+				<button id="boton-descarga">Descargar</button>
 
 			</article>
 
@@ -162,17 +162,49 @@
 
 	<!-- Scripts -->
 	<script type="module" src="./index.js" type="module"></script>
-	<script type="text/javascript">
-		 function imprimirDIV(contenido) {
-        var ficha = document.getElementById(contenido);
-        var ventanaImpresion = window.open(' ', 'popUp');
-        ventanaImpresion.document.write(ficha.innerHTML);
-        ventanaImpresion.document.close();
-        ventanaImpresion.print();
-        ventanaImpresion.close();
-    }
-	</script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+	<script type="text/javascript">
+
+		function downloadCanvas(canvasId, filename) {
+			// Obteniendo la etiqueta la cual se desea convertir en imagen
+			var domElement = document.getElementById(canvasId);
+
+			// Utilizando la función html2canvas para hacer la conversión
+			html2canvas(domElement, {
+				onrendered: function (domElementCanvas) {
+					// Obteniendo el contexto del canvas ya generado
+					var context = domElementCanvas.getContext('2d');
+
+					// Creando enlace para descargar la imagen generada
+					var link = document.createElement('a');
+					link.href = domElementCanvas.toDataURL("image/png");
+					link.download = filename;
+
+					// Chequeando para browsers más viejos
+					if (document.createEvent) {
+						var event = document.createEvent('MouseEvents');
+						// Simulando clic para descargar
+						event.initMouseEvent("click", true, true, window, 0,
+							0, 0, 0, 0,
+							false, false, false, false,
+							0, null);
+						link.dispatchEvent(event);
+					} else {
+						// Simulando clic para descargar
+						link.click();
+					}
+				}
+			});
+		}
+
+		// Haciendo la conversión y descarga de la imagen al presionar el botón
+		$('#boton-descarga').click(function () {
+			downloadCanvas('imagen', 'imagen.png');
+		});
+	</script>
+	
 	<script src="assetshome/js/jquery.min.js"></script>
 	<script src="assetshome/js/browser.min.js"></script>
 	<script src="assetshome/js/breakpoints.min.js"></script>
