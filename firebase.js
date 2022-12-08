@@ -115,6 +115,7 @@ export const iniciarSesion = (auth, email, password) =>
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      alert("Favor de verificar correo electrónico y contraseña, ya que no coinciden")
     });
 
 var userID = localStorage.getItem("UserID");

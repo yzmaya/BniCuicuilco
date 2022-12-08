@@ -42,6 +42,7 @@ import {
        
     } catch (error) {
       console.log(error);
+      alert(error)
     }
   //  window.location.href = 'home.html';
   });
