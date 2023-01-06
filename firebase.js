@@ -3,7 +3,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
 //import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js";
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -117,6 +117,21 @@ export const iniciarSesion = (auth, email, password) =>
       const errorMessage = error.message;
       alert("Favor de verificar correo electrónico y contraseña, ya que no coinciden")
     });
+
+    export const recuperarContrasena = (auth, email) =>
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        // Signed in
+        alert("Hemos enviado la contraseña a tu correo")
+        
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert("Lo sentimos, verifica que tu correo electrónico este bien escrito")
+        alert(errorMessage)
+      });
 
 var userID = localStorage.getItem("UserID");
 

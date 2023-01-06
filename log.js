@@ -3,6 +3,7 @@
 import {
   iniciarSesion,
   crearCuenta,
+  recuperarContrasena,
     auth,
    
     
@@ -39,7 +40,32 @@ import {
   });
 
 
+//crear cuenta de inicio de sesión
 
+  formCrearCuenta.addEventListener("submit", async (e) => {
+    e.preventDefault();
+  
+    const correo = formCrearCuenta["email2"];
+    
+    
+   
+   
+   try {
+      //  console.log(correo.value)
+        //console.log(contrasena.value)
+       //alert(correo.value)
+        
+      //return nombre;
+   await  recuperarContrasena(auth,correo.value)
+  
+    //  window.location.href = 'home.html';
+       
+    } catch (error) {
+      console.log(error);
+    }
+  //  window.location.href = 'home.html';
+  });
+  
 
   //crear cuenta de inicio de sesión
   /*
