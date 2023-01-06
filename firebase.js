@@ -273,10 +273,47 @@ export const onGetTareas = (callback) =>
 const date = new Date();
 const currentMonth = date.getMonth() + 1;
 
+//const dic2022 = date.getMonth() + 12;
+
+
 export const onGetTareas2 = (callback) =>
   onSnapshot(collectionGroup(db, "" + currentMonth + ""), callback);
 
+  export const onGetEnero = (callback) =>
+  onSnapshot(collectionGroup(db, "1"), callback);
 
+  export const onGetFebrero = (callback) =>
+  onSnapshot(collectionGroup(db, "2"), callback);
+
+  export const onGetMarzo = (callback) =>
+  onSnapshot(collectionGroup(db, "3"), callback);
+
+  export const onGetAbril = (callback) =>
+  onSnapshot(collectionGroup(db, "4"), callback);
+
+  export const onGetMayo = (callback) =>
+  onSnapshot(collectionGroup(db, "5"), callback);
+
+  export const onGetJunio = (callback) =>
+  onSnapshot(collectionGroup(db, "6"), callback);
+
+  export const onGetJulio = (callback) =>
+  onSnapshot(collectionGroup(db, "7"), callback);
+
+  export const onGetAgosto = (callback) =>
+  onSnapshot(collectionGroup(db, "8"), callback);
+
+  export const onGetSeptiembre = (callback) =>
+  onSnapshot(collectionGroup(db, "9"), callback);
+
+  export const onGetOctubre = (callback) =>
+  onSnapshot(collectionGroup(db, "10"), callback);
+
+  export const onGetNoviembre = (callback) =>
+  onSnapshot(collectionGroup(db, "11"), callback);
+
+  export const onGetDiciembre = (callback) =>
+  onSnapshot(collectionGroup(db, "12"), callback);
 
 /**
  *

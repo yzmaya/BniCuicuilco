@@ -11,7 +11,7 @@
       rel="stylesheet"
       href="https://bootswatch.com/5/quartz/bootstrap.min.css"
     />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
     <style>
@@ -35,7 +35,7 @@
          
         </li>
         <li class="nav-item">
-        <!--  <a class="nav-link" href="admin.html">Reporte Semanal</a> -->
+          <a class="nav-link" href="reporte.html">Reporte Mensual</a> 
         </li>
      <!--
         <li class="nav-item">
@@ -158,30 +158,35 @@
 
 <div class="container" >
   <br>
+ 
+    <button class="btn btn-success" id="vertodo" value="">Mostrar</button>
   <div class="input-group mb-3">
+    
     <span class="input-group-text">Buscador</span>
-    <input type="text" class="form-control" placeholder="*">
-
+    <input id="filtrar" type="text" class="form-control" placeholder="Buscar">
+    
   </div>
   <div class="table-responsive">
-    <table class="table table-hover table-striped">
+    <table class="table table-hover table-striped" id="testTable">
       <thead>
         <tr>
+          <th>Fecha</th>
+          <th>Hora</th>
           <th>Nombre</th>
-          <th>Esfera de Contactos</th>
-          <th>Giro de Negocios</th>
-          <th>Producto estrella</th>
-          <th>LLamar</th>
-          <th>Whatsapp</th>
+          <th>Tipo</th>
+       
           
         </tr>
       </thead>
-      <tbody id="tasks-container">
+    
+      <tbody id="tasks-container" class="buscar" >
         
       
       </tbody>
     </table>
   </div>
+  <button id="btnExport" onclick="fnExcelReport();" class="btn btn-primary">Exportar a
+    Excel</button>
   </div>
 
 
@@ -216,7 +221,66 @@
 
     <script type="module" src="./getevents2.js" type="module"></script>
    
-   
+    <script>
+      function fnExcelReport()
+{
+    var tab_text="<table border='2px'><tr bgcolor='#87AFC6'>";
+    var textRange; var j=0;
+    tab = document.getElementById('testTable'); // id of table
+
+    for(j = 0 ; j < tab.rows.length ; j++) 
+    {     
+        tab_text=tab_text+tab.rows[j].innerHTML+"</tr>";
+        //tab_text=tab_text+"</tr>";
+    }
+
+    tab_text=tab_text+"</table>";
+    tab_text= tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+    tab_text= tab_text.replace(/<img[^>]*>/gi,""); // remove if u want images in your table
+    tab_text= tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE "); 
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+    {
+        txtArea1.document.open("txt/html","replace");
+        txtArea1.document.write(tab_text);
+        txtArea1.document.close();
+        txtArea1.focus(); 
+        sa=txtArea1.document.execCommand("SaveAs",true,"Say Thanks to Sumit.xls");
+    }  
+    else                 //other browser not tested on IE 11
+        sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));  
+
+    return (sa);
+}
+
+   </script>
+   <script>
+    $(document).ready(function () {
+
+(function ($) {
+
+    $('#filtrar').keyup(function () {
+
+        var rex = new RegExp($(this).val(), 'i');
+      
+        $('.buscar tr').hide();
+        $('.buscar tr').filter(function () {
+            return rex.test($(this).text());
+              
+        }).show();
+
+    });
+
+}(jQuery));
+ 
+
+});
+
+   </script>
+    
     
   
 
