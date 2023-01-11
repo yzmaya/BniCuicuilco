@@ -270,7 +270,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
     var horaComp = hora + ":" + mins + ":" + secs
 
 
-    localStorage.setItem(content, horaComp);
+    localStorage.setItem(content, content, horaComp);
    // alert("agregado sin internet")
 
     async function f() {
