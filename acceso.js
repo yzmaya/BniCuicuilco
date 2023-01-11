@@ -17,7 +17,7 @@ import {
   saveInvitado,
 
 } from "./firebase.js";
-
+ 
 
 const taskForm = document.getElementById("task-form");
 const tasksContainer = document.getElementById("tasks-container");
@@ -68,7 +68,6 @@ window.addEventListener("DOMContentLoaded", async (e) => {
   // querySnapshot.forEach((doc) => {
   //   console.log(doc.data());
   // });
-
 
 
 
@@ -271,7 +270,8 @@ window.addEventListener("DOMContentLoaded", async (e) => {
     var horaComp = hora + ":" + mins + ":" + secs
 
 
-
+    localStorage.setItem(content, horaComp);
+   // alert("agregado sin internet")
 
     async function f() {
 
@@ -279,6 +279,8 @@ window.addEventListener("DOMContentLoaded", async (e) => {
 
       const docu2 = await getTaskingName(content);
       const username = docu2.data().name;
+
+     
       saveDate(fechaComp, horaComp, username, content, networker.value);
       // console.log(username)
       // return task2
