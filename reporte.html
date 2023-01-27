@@ -12,6 +12,8 @@
       href="https://bootswatch.com/5/quartz/bootstrap.min.css"
     />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 
     <style>
@@ -32,7 +34,7 @@
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link active" > Bienvenido/a  <span id="nombre"></span></a>
-    
+     
          
         </li>
         <li class="nav-item">
@@ -158,6 +160,14 @@
 
 
 <div class="container" >
+  <br>
+  <div class="input-group mb-3">
+   
+    <span class="input-group-text">Buscador</span>
+    <input id="filtrar" type="text" class="form-control" placeholder="Buscar">
+    
+  </div>
+
   <div class="table-responsive">
     <table class="table table-hover table-striped" id="testTable">
       <thead>
@@ -166,10 +176,11 @@
           <th>Hora</th>
           <th>Nombre</th>
           <th>Tipo</th>
+          <th>Invitado x</th>
           
         </tr>
       </thead>
-      <tbody id="tasks-container">
+      <tbody id="tasks-container" class="buscar" >
         
       
       </tbody>
@@ -247,6 +258,30 @@
 }
 
    </script>
+
+<script>
+  $(document).ready(function () {
+
+(function ($) {
+
+  $('#filtrar').keyup(function () {
+
+      var rex = new RegExp($(this).val(), 'i');
+    
+      $('.buscar tr').hide();
+      $('.buscar tr').filter(function () {
+          return rex.test($(this).text());
+            
+      }).show();
+
+  });
+
+}(jQuery));
+
+
+});
+
+ </script>
     
   
 
